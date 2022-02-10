@@ -24,7 +24,7 @@ int_lit (\-|\+)?{digit}+
 float_lit {int_lit}\.{digit}+((E|e){int_lit})?
 false_lit "false"
 true_lit "true"
-char_lit '{alphanumeric}|{spec_char}'	
+char_lit '{alphanumeric}|{spec_char}'
 
 id {alphabetic}{alphanumeric}*
 
@@ -85,6 +85,7 @@ block_end \*\/
 {char_lit} { return TK_LIT_CHAR; }
 {true_lit} { return TK_LIT_TRUE; }
 {false_lit} { return TK_LIT_FALSE; }
+\"[^\"\n]*\" { return TK_LIT_STRING; }
 
  /*IDENTIFICADORES*/
 {id} { return TK_IDENTIFICADOR; }
