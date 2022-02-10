@@ -5,7 +5,7 @@
 int lines = 1;
 
 int get_line_number() {
-	return lines;
+	return yylineno;
 }
 
 %}
@@ -24,7 +24,7 @@ int_lit (\-|\+)?{digit}+
 float_lit {int_lit}\.{digit}+((E|e){int_lit})?
 false_lit "false"
 true_lit "true"
-char_lit '{alphanumeric}|{spec_char}'
+char_lit '({alphanumeric}|{spec_char})'
 
 id {alphabetic}{alphanumeric}*
 
@@ -33,7 +33,6 @@ inlinecomment \/\/.*
 block_start \/\*
 block_end \*\/
 
-%x MULTILINE_COMMENT
 %option yylineno
 
 %%
@@ -90,15 +89,10 @@ block_end \*\/
  /*IDENTIFICADORES*/
 {id} { return TK_IDENTIFICADOR; }
 
-{linebreak} { ++lines; }
+{linebreak} { }
 {white} { }
 {inlinecomment} { }
-
-{block_start} { BEGIN(MULTILINE_COMMENT); }
-<MULTILINE_COMMENT>{block_end} {  BEGIN(INITIAL); }
-<MULTILINE_COMMENT>{linebreak} { ++lines; }
-<MULTILINE_COMMENT>. { }
-
+[/][*][^*]*[*]+([^*/][^*]*[*]+)*[/]       { /* DO NOTHING */ }
 . { return TOKEN_ERRO; }
 
 %%
