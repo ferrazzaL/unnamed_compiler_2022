@@ -1,5 +1,9 @@
+/*
+Leonardo Ferrazza
+Thales Paim
+*/
 %{
-#include "stdlib.h"
+#include <stdlib.h>
 #include "tokens.h"
 
 int lines = 1;
@@ -24,14 +28,12 @@ int_lit (\-|\+)?{digit}+
 float_lit {int_lit}\.{digit}+((E|e){int_lit})?
 false_lit "false"
 true_lit "true"
-char_lit '({alphanumeric}|{spec_char})'
+char_lit '({alphanumeric}|{spec_char}|{white})'
 
 id {alphabetic}{alphanumeric}*
 
 linebreak \n
 inlinecomment \/\/.*
-block_start \/\*
-block_end \*\/
 
 %option yylineno
 
@@ -75,8 +77,8 @@ block_end \*\/
 "!=" 	{ return TK_OC_NE; }
 "&&" 	{ return TK_OC_AND; }
 "||"	{ return TK_OC_OR; }
-">>"	{ return TK_OC_SR; }
-"<<"	{ return TK_OC_SL; }
+">>"	{ return TK_OC_SL; }
+"<<"	{ return TK_OC_SR; }
 
  /*LITERAIS*/
 {int_lit} { return TK_LIT_INT; }
