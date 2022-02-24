@@ -140,14 +140,15 @@ block:
 
 command_list:
 	command ';'
-	|command ';' command_list;
+	|command ';' command_list
+	|flow_command
+	|flow_command command_list;
 
 
 /*COMMANDS*/
 command:
 	declaration
 	|attribution
-	|control
 	|input
 	|output
 	|return
@@ -156,6 +157,9 @@ command:
 	|block
 	|call
 	|shift;
+
+flow_command:
+	control;
 
 /*DECLARATION*/
 declaration:
@@ -241,10 +245,10 @@ expression:
 	|'*' operand
 	|'?' operand
 	|'#' operand
-	|operand '+' operand
-	|operand '-' operand
 	|operand '*' operand
 	|operand '/' operand
+	|operand '+' operand
+	|operand '-' operand
 	|operand '%' operand
 	|operand '|' operand
 	|operand '&' operand

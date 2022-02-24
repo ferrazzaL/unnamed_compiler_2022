@@ -1,26 +1,26 @@
-linha1
-int 123
-float 123.123
-float 123.123e123
-int +123
-char 'c'
-if
-then
-else
-do
-while
+int test;
+static int test;
+float test;
+static float test;
+int _123;
+int test[123];
+
+int func(int par1, char par3, float par3)
+{
+	int test <= 1;
+	chocoloate = 45 + 34;
+	if (test == one) 
+	{
+		break;
+	}
+	else
+	{
+		continue ;
+	}
+	test = +2;
+	int testd <= 21;	
+	return 1 + 1;
+}
 //linha comentada
 /*duas linhas
 comentadas */
-ident_tif1cador
-_identificador
-"string324com324tudo"
-linha18
-/
-2errolinha20
-/**** print sem fim
-e agora
-*/
-volta
-<<<
-/* comment with no end

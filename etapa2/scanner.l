@@ -24,7 +24,7 @@ spec_char [,;:\(\)\[\]\{\}\+\-\|\*\/<>=!&%#^.$]
 control_char "\\0"|"\\t"|"\\n"|"\\v"|"\\f"|"\\r"
 
 
-int_lit (\-|\+)?{digit}+
+int_lit {digit}+
 float_lit {int_lit}\.{digit}+((E|e){int_lit})?
 false_lit "false"
 true_lit "true"
